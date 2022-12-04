@@ -3,8 +3,6 @@
 #include "hid_l2cap.h"
 #include <BluetoothSerial.h>
 
-BluetoothSerial SerialBT;
-
 // uint8_t TARGET_BT_ADDR[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05};
 uint8_t TARGET_BT_ADDR[] = {0x48, 0x18, 0x8D, 0xA0, 0xBE, 0xC0};
 
@@ -20,10 +18,7 @@ void key_callback(uint8_t *p_msg, size_t len) {
 
 void setup() {
   Serial.begin(115200);
-  if (!SerialBT.begin("ESP32master", true)) {
-    Serial.println("========== serialBT failed!");
-    abort();
-  }
+  esp_bt_gap_set_scan_mode(ESP_BT_CONNECTABLE, ESP_BT_NON_DISCOVERABLE);
 
   // Replace the "1a:2b:3c:01:01:01" with the MAC address
   // the controller wants to pair to
