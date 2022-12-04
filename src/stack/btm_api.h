@@ -27,7 +27,6 @@
 
 
 #include "stack/bt_types.h"
-#include "common/bt_target.h"
 
 /* Security service definitions (BTM_SetSecurityLevel)
 ** Used for Authorization APIs
